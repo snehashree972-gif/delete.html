@@ -1,23 +1,50 @@
-import React from 'react'
 
-const Login = () => {
+import { useState } from "react";
+import { Link,Navigate,useNavigate} from "react-router-dom";
+import "./Auth.css";
+
+function Login({setIsLoggedIn}) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate=useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login form submitted", { email, password });
+    setIsLoggedIn(true);
+  navigate("/")
+  };
+
   return (
-    <>
-    <div> Login</div>
-    <div>
-      <form>
-        <lable>Name</lable>
-            <input type="text" placeholder="Name" require="true" value={name} onChange={e.target.value} />
-            <lable>Phone Number</lable>
-            <input type="Number" placeholder="Phone Number" require="true" value={phonenumber} onChange={e.target.value} />
-            <lable>Email Address</lable>
-            <input type="Email Address" placeholder="Email Address" require="true" value={emailaddress} onChange={e.target.value}/>
-            <button type="submit">Submit</button>
-      </form>
-    </div>
+    <div className="auth-container">
+      <h2>Login</h2>
 
-</>
-  )
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <p className="auth-link">
+        Don't have an account? <Link to="/signup">Sign Up</Link>
+      </p>
+    </div>
+  );
 }
 
-export default Login
+export default Login;
