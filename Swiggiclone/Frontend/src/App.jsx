@@ -8,11 +8,12 @@ import {
 import { useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Homepage";
 import "./App.css";
-function App() {
-  const [isLoggedin, setIsLoggedin] = useState(true);
 
+
+function App() {
+  const [isLoggedin, setIsLoggedin] = useState(false);
   return (
     <Router>
       <div className="App-nav">

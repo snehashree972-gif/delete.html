@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
+import { signupAPI } from "../services/api";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -10,8 +11,16 @@ function Signup() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try{
+      const userData ={ name,email,phone,password}
+      const data = await signupAPI(userData)
+      console.log(data)
+    }
+    catch(error){
+
+    }
     console.log("Signup form submitted", { name, email, phone, password });
   };
 

@@ -1,19 +1,18 @@
-
 import { useState } from "react";
-import { Link,Navigate,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 
-function Login({setIsLoggedIn}) {
+function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login form submitted", { email, password });
     setIsLoggedIn(true);
-  navigate("/")
+    navigate("/");
   };
 
   return (
@@ -48,8 +47,3 @@ function Login({setIsLoggedIn}) {
 }
 
 export default Login;
-
-
-
-
-
